@@ -1,0 +1,50 @@
+import random
+print("Welcome to Whoppa Chatbot. What's on your mind today? *Sheesh*")
+doExit = False
+
+while doExit == False:
+    choice = input()
+    if choice == "quit":
+        doExit = True
+        break
+
+    #listen and respond to feelings
+    if choice.find("sad") != -1 or choice.find("feeling down") != -1 or choice.find("upset") != -1 or choice.find("angry") != -1 :
+        print("I'm sorry to hear you're feeling that way.")
+    elif choice.find("happy") != -1 or choice.find("glad") != -1 or choice.find("excited") != -1 or choice.find("looking forward") != -1 :
+        print("That's great!")
+    elif choice.find("I'm") != -1: #these next three lines let you repeat the word after "I'm" back in a sentence
+        word_list = choice.split() #break the sentence into a list with one word per slot
+        next_word = word_list[word_list.index("I'm")+1] #find the word after "I'm"
+        if next_word == "a":
+            next_word = word_list[word_list.index("a")+1]
+            print("Why are you", next_word+ "?")
+        else:
+            print("Why are you", next_word+ "?") #repeat it back 
+        #NOTE: it would be good to add an if statement here checking if the next word was "a" 
+        #so if someone says "I'm a frog", it doesn't say back, "Why are you a?"
+
+    #listen and respond to specific topics
+    elif choice.find("Yeah") != -1 or choice.find("No") != -1 or choice.find("Sure I guess") != -1 or choice.find("Idk") != -1 :
+        print("Alright then hahaha")
+
+    elif choice.find("Hamburger") != -1 or choice.find("Fries") != -1 or choice.find("Soda") != -1 or choice.find("Popcorn") != -1 :
+        print("Dang I like Carne Asada Fries I'm glad you like that too! But I prefer Adobada Fries with shrimp added from Taco Star")
+        
+    elif choice.find("Forza") != -1 or choice.find("Halo") != -1 or choice.find("GTA") != -1:
+        print("I like GTA too!")
+    elif choice.find("Sheesh") != -1 or choice.find ("Okayy!") != -1 or choice.find ("HAHA") != -1:
+        print("Very cool yo!")
+    elif choice.find("Draco") != -1 or choice.find("toad") != -1:
+        print("You are not Draco, Draco is my brother!! haha")
+        
+    else: #randomize last statement so it's not too repetetive 
+        num = random.randrange(1, 100)
+        if num <25:
+            print("Whoppa Aint Playing no GAMES bruh what you mean by that?")
+        elif num <50:
+            print("Whoppa is asking bro!")
+        elif num <75:
+             print("WhoppaWitDaChoppa getting kinda confused yo")
+        else:
+            print("What you mean cuhh?")
